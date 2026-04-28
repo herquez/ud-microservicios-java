@@ -39,7 +39,7 @@ public class ComapnyServiceImpl implements CompanyService {
         var companyToUpdate = this.companyRepository.findByName(name)
                 .orElseThrow(() -> new NoSuchElementException("Company not found"));
         companyToUpdate.setLogo(company.getLogo());
-        companyToUpdate.setFundationDate(company.getFundationDate());
+        companyToUpdate.setFoundationDate(company.getFoundationDate());
         companyToUpdate.setFounder(company.getFounder());
         return this.companyRepository.save(companyToUpdate);
     }
