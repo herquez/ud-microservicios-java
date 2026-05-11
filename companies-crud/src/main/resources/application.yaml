@@ -19,7 +19,7 @@ logging:
 server:
   servlet:
     context-path: /companies-crud
-  port: 8081
+  port: 0
 
 eureka:
   instance:
