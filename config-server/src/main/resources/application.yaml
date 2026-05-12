@@ -13,6 +13,8 @@ spring:
           uri: https://github.com/herquez/microservice-config.git
           default-label: main
           clone-on-start: true
+          username: herquez
+          password: ${GITHUB_TOKEN}
 
 eureka:
   instance:
