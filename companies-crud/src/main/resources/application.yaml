@@ -1,17 +1,33 @@
 spring:
   application:
     name: companies-crud
+  profiles:
+    default: default
+    # default: prod / qa
   config:
-    import: optional:file:.env[.properties],optional:file:../.env[.properties]
+    import: "optional:configserver:http://localhost:7777"
   datasource:
-    url: ${DB_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:companies}}
-    username: ${DB_USER:debuggeandoideas}
-    password: ${DB_PASSWORD:udemy}
+    username: ${db.username}
     hikari:
-      connection-timeout: ${DB_CONNECTION_TIMEOUT:20000}
-      maximum-pool-size: ${DB_MAX_POOL_SIZE:5}
+      maximum-pool-size: ${db.maximum-pool-size}
+      connection-timeout: ${db.connection-timeout}
+    url: ${db.url}
+    password:  ${db.password}
 
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+server:
+  servlet:
+    context-path: /companies-crud
+  port: 0
+
+eureka:
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+
+client:
+  service-url:
+    defaultZone: http://localhost:8761/eureka/
