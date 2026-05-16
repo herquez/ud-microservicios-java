@@ -14,7 +14,7 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public String makeReport(String reportName) {
-        return "";
+        return this.companiesRepository.getByName(reportName).orElseThrow().getName();
     }
 
     @Override

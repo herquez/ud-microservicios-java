@@ -12,6 +12,6 @@ import java.util.Optional;
 @FeignClient(name = "companies-crud")
 @LoadBalancerClient(name = "companies-crud", configuration = LoadBalancerConfiguration.class)
 public interface CompaniesRepository {
-    @GetMapping(path = "/companies-crud/{name}")
-    public Optional<Company> getByName(@PathVariable String name);
+    @GetMapping(path = "/companies-crud/company/{name}")
+    Optional<Company> getByName(@PathVariable String name);
 }
