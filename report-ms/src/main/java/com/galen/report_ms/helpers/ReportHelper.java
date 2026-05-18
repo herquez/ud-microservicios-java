@@ -17,6 +17,7 @@ public class ReportHelper {
         return this.reportTemplate
                 .replace("{company}", company.getName())
                 .replace("{foundation_date}", company.getFoundationDate().toString())
-                .replace("{founder}", company.getFounder());
+                .replace("{founder}", company.getFounder())
+                .replace("{web_sites}", company.getWebSites().toString());
     }
 }
