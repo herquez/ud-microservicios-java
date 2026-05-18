@@ -47,6 +47,6 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public void deleteReport(String reportName) {
-
+        this.companiesRepository.deleteByName(reportName);
     }
 }

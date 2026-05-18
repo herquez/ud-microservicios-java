@@ -4,6 +4,7 @@ import com.galen.report_ms.beans.LoadBalancerConfiguration;
 import com.galen.report_ms.models.Company;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,4 +20,7 @@ public interface CompaniesRepository {
 
     @PostMapping(path = "/companies-crud/company")
     Optional<Company> postCompany(@RequestBody Company company);
+
+    @DeleteMapping(path = "/companies-crud/company/{name}")
+    void deleteByName(@PathVariable String name);
 }

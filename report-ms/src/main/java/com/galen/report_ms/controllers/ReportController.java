@@ -24,4 +24,10 @@ public class ReportController {
         var response = this.reportService.saveReport(report);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping(path = "{company_name}")
+    public ResponseEntity<Void> deleteReport(@PathVariable("company_name") String companyName) {
+        this.reportService.deleteReport(companyName);
+        return ResponseEntity.noContent().build();
+    }
 }
