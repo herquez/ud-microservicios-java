@@ -19,7 +19,7 @@ public class ReportController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping(path = "{name}")
+    @PostMapping()
     public ResponseEntity<String> postReport(@RequestBody String report) {
         var response = this.reportService.saveReport(report);
         return ResponseEntity.ok(response);
