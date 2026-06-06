@@ -1,6 +1,19 @@
 spring:
   application:
     name: gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: companies-crud
+              uri: http://localhost:8081
+              predicates:
+                - Path=/companies-crud/company/**
+            - id: report-ms
+              uri: http://localhost:7070
+              predicates:
+                - Path=/report-ms/report/**
 
 profiles:
   default: default
