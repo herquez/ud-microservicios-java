@@ -44,6 +44,34 @@ On Windows:
 companies-crud\mvnw.cmd spring-boot:run
 ```
 
+## Microservices Orchestration Script
+
+Use `manage_services.py` from repository root to run all services in order and see logs in one terminal.
+
+Service startup order:
+
+1. `registry-server`
+2. `config-server`
+3. `report-ms`
+4. `companies-crud`
+5. `gateway`
+
+Commands:
+
+```bash
+python manage_services.py start
+python manage_services.py stop
+python manage_services.py restart
+python manage_services.py status
+```
+
+Behavior:
+
+- `start` launches `db` (`docker compose up -d db`) and then starts all Spring Boot services in order.
+- Logs are streamed in the same terminal with service prefixes, for example: `[gateway] ...`.
+- `stop` stops all started Java processes and the DB container.
+- `status` checks if the expected ports are reachable.
+
 ## Build and Test
 
 From repository root:
